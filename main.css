@@ -1,0 +1,13 @@
+h1{
+    color:aqua;
+    text-align: center;
+    height: 100vh;
+
+}
+.box {
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+    text-align: center;
+    background-color: blanchedalmond;
+}
