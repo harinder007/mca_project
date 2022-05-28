@@ -1,13 +1,35 @@
-h1{
-    color:aqua;
+.heading{
+    display: flex;
+    padding: left 100px; 
+    justify-content: space-between;
+    margin-left: 400px;
+}
+
+#login {
+    text-align: end;
+    border-radius: 50%;
+}
+#welcome{
+    color: chartreuse;
     text-align: center;
-    height: 100vh;
+}
+body{
+   background-color: rgb(3, 50, 34)             ;
 
 }
-.box {
-    border-style: solid;
-    border-color: black;
-    border-width: 5px;
+.grid-container {
+    display: grid;
+    gap: 50px;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
     text-align: center;
-    background-color: blanchedalmond;
+    border-radius: 10%;
+}
+.grid-item:hover {
+    transform: scale(1.8);
 }
