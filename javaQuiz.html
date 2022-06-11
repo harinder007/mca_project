@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav><div id="item1">Home</div>
+        <div id="item2">Leaderboard</div>
+        <div id="item3">About</div></nav>
+
+        <div class="popup">
+            <div>Enter your Name</div>
+            <div><input id="enter-name" type="text"></div>
+            <div><button id="start">START</button></div>
+        </div>
+    <script src="common.js"></script> 
+    <script>
+        document.getElementById('start').addEventListener('click', ()=> {
+        let name = document.getElementById('enter-name').value;
+        localStorage.setItem("name", name);
+        console.log(name);
+        document.getElementsByClassName("popup")[0].style.display='none';
+    })
+    </script>
+</body>
+</html>
