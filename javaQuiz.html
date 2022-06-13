@@ -11,7 +11,7 @@
     <nav><div id="item1">Home</div>
         <div id="item2">Leaderboard</div>
         <div id="item3">About</div></nav>
-
+        <div id="welcome"></div>
         <div class="popup">
             <div>Enter your Name</div>
             <div><input id="enter-name" type="text"></div>
@@ -24,7 +24,28 @@
         localStorage.setItem("name", name);
         console.log(name);
         document.getElementsByClassName("popup")[0].style.display='none';
-    })
+        document.getElementById('welcome').innerHTML= 'Hello ' +localStorage.getItem('name')
+    }
+    
+    )
+    //storing java quiz question and answer
+    let javaQuestions=[{
+        que:"java is invented by?",
+        option:["Harinder","Amit","Vikash","Other"],
+        ans:"Other"
+    }]
+   let queElement=document.createElement('div');
+   let ansElement=document.createElement('ol');
+   let op1=document.createElement('li');
+   let op2=document.createElement('li');
+   let op3=document.createElement('li');
+   let op4=document.createElement('li');
+    queElement.className="que";
+    ansElement.className="ans";
+    op1.id="op1";
+    op2.id="op2";
+    op3.id="op3";
+    op4.id="op4";
     </script>
 </body>
-</html>
+</html
