@@ -51,6 +51,34 @@ background-color: rgba(255, 255, 255, 0.02);
 animation: popup 1s forwards;
 }
 
+.hide{
+    display: none;
+}
+
+.show
+{
+    display: block;
+}
+.ans {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(2,1fr);
+    row-gap: 20px;
+    column-gap: 20px;
+}
+.option {
+    color: black;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    width: 40vw;
+    text-align: center;
+    font-weight: 600;
+}
+.option:hover {
+    background-color: rgb(245, 196, 150);
+}
 @keyframes popup {
     from{
     opacity: 0;

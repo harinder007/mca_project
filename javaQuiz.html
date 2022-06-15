@@ -1,51 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>    
+
+<head>
     <link rel="stylesheet" href="main.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <nav><div id="item1">Home</div>
+    <nav>
+        <div id="item1">Home</div>
         <div id="item2">Leaderboard</div>
-        <div id="item3">About</div></nav>
-        <div id="welcome"></div>
-        <div class="popup">
-            <div>Enter your Name</div>
-            <div><input id="enter-name" type="text"></div>
-            <div><button id="start">START</button></div>
-        </div>
-    <script src="common.js"></script> 
+        <div id="item3">About</div>
+    </nav>
+    <div id="welcome"></div>
+    <div id="que-body"></div>
+    <div class="popup hide">
+        <div>Enter your Name</div>
+        <div><input id="enter-name" type="text"></div>
+        <div><button id="start">START</button></div>
+    </div>
+    <script src="common.js"></script>
     <script>
-        document.getElementById('start').addEventListener('click', ()=> {
-        let name = document.getElementById('enter-name').value;
-        localStorage.setItem("name", name);
-        console.log(name);
-        document.getElementsByClassName("popup")[0].style.display='none';
-        document.getElementById('welcome').innerHTML= 'Hello ' +localStorage.getItem('name')
-    }
-    
-    )
-    //storing java quiz question and answer
-    let javaQuestions=[{
-        que:"java is invented by?",
-        option:["Harinder","Amit","Vikash","Other"],
-        ans:"Other"
-    }]
-   let queElement=document.createElement('div');
-   let ansElement=document.createElement('ol');
-   let op1=document.createElement('li');
-   let op2=document.createElement('li');
-   let op3=document.createElement('li');
-   let op4=document.createElement('li');
-    queElement.className="que";
-    ansElement.className="ans";
-    op1.id="op1";
-    op2.id="op2";
-    op3.id="op3";
-    op4.id="op4";
+        document.getElementById('start').addEventListener('click', () => {
+            let name = document.getElementById('enter-name').value;
+            localStorage.setItem("name", name);
+            console.log(name);
+            document.getElementsByClassName("popup")[0].className = "popup hide"
+            document.getElementById('welcome').innerHTML = 'Hello ' + localStorage.getItem('name')
+            location.reload();
+        }
+        )
+        //storing java quiz question and answer
+        let userInput = false;
+        let optionChoosed;
+        let queNo = 0;
+        let result = 0;
+        let javaQuestions = [{
+            que: "Java is a Successor to which programming language?",
+            option: ["B", "C", "C++", "D"],
+            ans: "C++"
+        },
+        {
+            que: "Who invented Java language?",
+            option: ["Dennis Ritchie", "James Gosling", "Larry Page", "Serge Page"],
+            ans: "James Gosling"
+        },
+        {
+            que: "What is the original name of Java Programming language?",
+            option: ["J++", "C++", "OAK", "TEAK"],
+            ans: "OAK"
+        },
+        {
+            que: "Which laboratory was Java invented or developed in?",
+            option: ["Bell Laboratory", "Sun Microsystems", "Dennis Ritchie Office", "Johnson and Johnson"],
+            ans: "Sun Microsystems"
+        },
+        {
+            que: "The name JAVA is known to the world as?",
+            option: ["A Tea Brand in India", "A Coffee Brand in Africa", "An Island in Indonesia", "Ragi Malt Juice"],
+            ans: "A Coffee Brand in Africa"
+        },
+        ]
+        let question = document.createElement('div');
+        question.className = "question hide";
+        let queElement = document.createElement('div');
+        let ansElement = document.createElement('ol');
+        let op1 = document.createElement('li');
+        let op2 = document.createElement('li');
+        let op3 = document.createElement('li');
+        let op4 = document.createElement('li');
+        queElement.className = "que";
+        ansElement.className = "ans";
+        op1.id = "op1";
+        op2.id = "op2";
+        op3.id = "op3";
+        op4.id = "op4";
+        op1.className = "option";
+        op2.className = "option";
+        op3.className = "option";
+        op4.className = "option";
+        question.appendChild(queElement);
+        question.appendChild(ansElement);
+        ansElement.appendChild(op1);
+        ansElement.appendChild(op2);
+        ansElement.appendChild(op3);
+        ansElement.appendChild(op4);
+
+        const nextQuestion = (option) => {
+            let item = javaQuestions[queNo];
+            if(queNo < 5){
+            queElement.innerText = item.que;
+            item.option.map((item2, i) => {
+                ansElement.childNodes[i].innerText = item2;
+            })
+            }
+            if(item.ans === item.option[option]){
+                result++;
+            }
+            console.log(result);
+            queNo++;
+        }
+        function shuffle(array) {
+            let currentIndex = array.length, randomIndex;
+
+            // While there remain elements to shuffle.
+            while (currentIndex != 0) {
+
+                // Pick a remaining element.
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+
+                // And swap it with the current element.
+                [array[currentIndex], array[randomIndex]] = [
+                    array[randomIndex], array[currentIndex]];
+            }
+
+            return array;
+        }
+        shuffle(javaQuestions);
+        console.log(javaQuestions);
+        nextQuestion(0);
+        op1.addEventListener('click', () => {
+            optionChoosed = 0;
+            nextQuestion(optionChoosed)
+        })
+        op2.addEventListener('click', () => {
+            optionChoosed = 1;
+            nextQuestion(optionChoosed)
+        })
+        op3.addEventListener('click', () => {
+            optionChoosed = 2;
+            nextQuestion(optionChoosed)
+        })
+        op4.addEventListener('click', () => {
+            optionChoosed = 3;
+            nextQuestion(optionChoosed)
+        })
+        document.getElementById('que-body').appendChild(question);
+
+        if (localStorage.getItem('name')) {
+            question.className = "question show";
+        }
+        else {
+            document.getElementsByClassName("popup")[0].className = "popup show"
+        }
+
+
     </script>
 </body>
+
 </html
